@@ -296,13 +296,13 @@ void FastText::quantize(const Args qargs) {
       }
     }
     input_ = ninput;
-    if (qargs.retrain) {
-      args_->epoch = qargs.epoch;
-      args_->lr = qargs.lr;
-      args_->thread = qargs.thread;
-      args_->verbose = qargs.verbose;
-      startThreads();
-    }
+  }
+  if (qargs.retrain) {
+    args_->epoch = qargs.epoch;
+    args_->lr = qargs.lr;
+    args_->thread = qargs.thread;
+    args_->verbose = qargs.verbose;
+    startThreads();
   }
 
   qinput_ = std::make_shared<QMatrix>(*input_, qargs.dsub, qargs.qnorm);
